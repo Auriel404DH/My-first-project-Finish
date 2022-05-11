@@ -1,0 +1,56 @@
+.header {
+  grid-area: h;
+  background-color: rgb(182, 182, 227);
+  border-radius: 5px;
+  max-width: 1200px;
+  margin-top: 20px;
+  box-shadow: 1px 2px 5px black;
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__news {
+  font-weight: 100;
+  min-width: 800px;
+  background-color: aliceblue;
+  padding: 7px 7px 7px 25px;
+  border-radius: 4px;
+  font-size: 18px;
+  margin: 2px;
+  margin-left: 60px;
+  box-shadow: inset 3px 1px 5px black;
+}
+
+.header img {
+  width: 60px;
+  height: auto;
+  margin: 10px;
+  background-color: aliceblue;
+  border-radius: 20%;
+  box-shadow: inset 3px 1px 5px black;
+}
+
+.login_block {
+  position: relative;
+  margin-right: 0.7rem;
+  margin-left: 5px;
+  padding: 0.3rem;
+  border-radius: 4px;
+  box-shadow: 3px 1px 5px black;
+  background-color: aliceblue;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.logout {
+  border-radius: 4px;
+  font-weight: 500;
+  padding: 0.2rem;
+  background-color: rgb(182, 182, 227);
+  box-shadow: inset 0px 0px 1px black;
+  cursor: pointer;
+}

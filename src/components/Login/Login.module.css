@@ -1,0 +1,49 @@
+.Login {
+  padding-right: 220px;
+  padding-bottom: 15px;
+  margin: 20px auto;
+  max-width: 300px;
+  font-size: 26px;
+}
+
+.form {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.sub {
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 0.5rem 3rem;
+  background-color: rgb(182, 182, 227);
+  cursor: pointer;
+}
+
+.line {
+  padding-bottom: 7px;
+  border-bottom: 1px solid black;
+  width: fit-content;
+}
+
+.erroror {
+  font-weight: 500;
+  box-shadow: 1px 1px 5px black;
+  margin: 0.5rem;
+  text-align: center;
+  background-color: rgb(188, 162, 162);
+  color: brown;
+  border-radius: 5px;
+  width: 240px;
+  font-size: 18px;
+}
+
+.errorE {
+  font-size: 18px;
+  box-shadow: 1px 1px 5px black;
+  margin: 0.5rem;
+  text-align: center;
+  background-color: rgb(188, 162, 162);
+  color: brown;
+  border-radius: 5px;
+  width: 240px;
+}

@@ -1,0 +1,40 @@
+.content__news {
+  position: relative;
+}
+
+.news__title {
+  margin: 5px 5px 5px 22px;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 800;
+  border-radius: 10px;
+  background-color: rgb(182, 182, 227);
+  text-align: center;
+  width: 1015px;
+}
+
+.news__body {
+  background-color: rgb(249, 249, 255);
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 100;
+  font-size: 22px;
+  width: 1015px;
+  height: 100px;
+  margin: 10px 0 10px 28px;
+}
+
+.news__button {
+  position: relative;
+  cursor: pointer;
+  left: 950px;
+  background-color: rgb(182, 182, 227);
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: black;
+  width: 100px;
+}

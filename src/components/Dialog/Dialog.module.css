@@ -1,0 +1,137 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  margin: 25px;
+  grid-template-areas:
+    'i m'
+    'i s';
+}
+
+.dialog__items {
+  grid-area: i;
+  padding: 0 20px 20px 20px;
+  border-right: 3px solid rgb(182, 182, 227);
+}
+
+.dialog__messages {
+  grid-area: m;
+  padding: 20px;
+  font-size: 22px;
+}
+
+.dialog__send {
+  grid-area: s;
+}
+
+.dialog__items .dialog__active {
+  color: blue;
+  text-decoration: none;
+}
+
+.dialog__item {
+  padding: 1rem;
+  font-size: 22px;
+  transition: 0.2s ease-in;
+  margin-bottom: 5px;
+  background-color: rgb(182, 182, 227);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.dialog__item img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.dialog__item:hover {
+  font-size: 25px;
+  font-weight: 700;
+  color: firebrick;
+  background-color: rgb(110, 110, 150);
+  border-radius: 5px;
+}
+
+.dialog__message {
+  width: fit-content;
+  margin: 1rem;
+  margin-top: 0;
+  padding: 1rem;
+  background-color: azure;
+  border-radius: 10px;
+}
+
+.dialog__Message__All img {
+  margin-top: 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 40px;
+}
+
+.dialog__Message__All {
+  display: flex;
+}
+
+.All {
+  display: flex;
+  margin: 5px;
+  align-items: center;
+  height: 100px;
+  align-items: flex-end;
+  padding-top: 25px;
+}
+
+.textArea {
+  width: 600px;
+  height: 70px;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 10px;
+  margin-left: 15px;
+}
+
+.buttON {
+  cursor: pointer;
+  background-color: rgb(182, 182, 227);
+  border-radius: 15px;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  margin-top: 5px;
+  box-shadow: 1px 1px 5px gray;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 560px;
+}
+
+.Message img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+.Message {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 635px;
+  margin-bottom: 15px;
+}
+
+.Message__Text {
+  width: fit-content;
+  margin-right: 15px;
+  padding: 1rem;
+  background-color: azure;
+  border-radius: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 22px;
+  margin-left: 17px;
+  margin-top: 5px;
+  width: fit-content;
+}
