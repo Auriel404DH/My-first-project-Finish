@@ -18,7 +18,6 @@ import { HashRouter } from 'react-router-dom';
 // import ProfileContainer from './components/Profile/ProfileContainer';
 // import { withAuthRedirect } from './hoc/AuthReduser';
 // import MyDialog from './components/Dialog/MyDialogContainer';
-
 const ProfileContainerLazy = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const DialogContainerLazy = React.lazy(() => import('./components/Dialog/MyDialogContainer'));
 const UsersContainerLazy = React.lazy(() => import('./components/Users/UsersContainer'));
@@ -62,10 +61,11 @@ const mapStateToProps = (state) => ({
 
 let AppContainer = compose(connect(mapStateToProps, { initializeApp })(App));
 
+// basename={process.env.PUBLIC_URL}
 let MainApp = () => {
   return (
     <Provider store={store}>
-      <HashRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter>
         <AppContainer />
       </HashRouter>
     </Provider>
