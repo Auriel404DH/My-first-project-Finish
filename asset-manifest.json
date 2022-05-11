@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/vccom-master/static/css/main.a4da230a.css",
-    "main.js": "/vccom-master/static/js/main.62442941.js",
+    "main.js": "/vccom-master/static/js/main.9c91ac5e.js",
     "static/css/317.e3f3ec68.chunk.css": "/vccom-master/static/css/317.e3f3ec68.chunk.css",
     "static/js/317.ec5a2919.chunk.js": "/vccom-master/static/js/317.ec5a2919.chunk.js",
     "static/css/575.daac9b5e.chunk.css": "/vccom-master/static/css/575.daac9b5e.chunk.css",
@@ -11,7 +11,7 @@
     "static/media/preloader.svg": "/vccom-master/static/media/preloader.81ca23fa13bd0d3c3759f161b198e1e8.svg",
     "index.html": "/vccom-master/index.html",
     "main.a4da230a.css.map": "/vccom-master/static/css/main.a4da230a.css.map",
-    "main.62442941.js.map": "/vccom-master/static/js/main.62442941.js.map",
+    "main.9c91ac5e.js.map": "/vccom-master/static/js/main.9c91ac5e.js.map",
     "317.e3f3ec68.chunk.css.map": "/vccom-master/static/css/317.e3f3ec68.chunk.css.map",
     "317.ec5a2919.chunk.js.map": "/vccom-master/static/js/317.ec5a2919.chunk.js.map",
     "575.daac9b5e.chunk.css.map": "/vccom-master/static/css/575.daac9b5e.chunk.css.map",
@@ -21,6 +21,6 @@
   },
   "entrypoints": [
     "static/css/main.a4da230a.css",
-    "static/js/main.62442941.js"
+    "static/js/main.9c91ac5e.js"
   ]
 }
