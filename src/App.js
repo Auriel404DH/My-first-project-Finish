@@ -13,7 +13,7 @@ import { compose } from 'redux';
 import { initializeApp } from './redux/appReduser';
 import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 // import UsersContainer from './components/Users/UsersContainer';
 // import ProfileContainer from './components/Profile/ProfileContainer';
 // import { withAuthRedirect } from './hoc/AuthReduser';
@@ -65,9 +65,9 @@ let AppContainer = compose(connect(mapStateToProps, { initializeApp })(App));
 let MainApp = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <AppContainer />
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 };
