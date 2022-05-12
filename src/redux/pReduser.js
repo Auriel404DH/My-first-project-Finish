@@ -3,6 +3,7 @@ import { profileAPI } from './../api/api';
 let SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
 let ADD_POST = 'profile/ADD-POST';
 let SET_STATUS = 'profile/SET_STATUS';
+let SET_PHOTO = 'profile/SET_PHOTO';
 
 let initialState = {
   profileData: [
@@ -41,6 +42,12 @@ const profileReduser = (state = initialState, action) => {
         status: action.status,
       };
     }
+    case SET_PHOTO: {
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.photos },
+      };
+    }
     default:
       return state;
   }
@@ -49,6 +56,7 @@ const profileReduser = (state = initialState, action) => {
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const addPost = (userText) => ({ type: ADD_POST, userText });
 const setStatus = (status) => ({ type: SET_STATUS, status });
+const setPhotoSucsess = (photos) => ({ type: SET_PHOTO, photos });
 
 export const getProfileThunkCreator = (userId) => async (dispatch) => {
   let response = await profileAPI.getProfile(userId);
@@ -64,6 +72,13 @@ export const updateStatusThunk = (status) => async (dispatch) => {
   let response = await profileAPI.updateStatus(status);
   if (response.data.resultCode === 0) {
     dispatch(setStatus(status));
+  }
+};
+
+export const updateProfilePhoto = (photo) => async (dispatch) => {
+  let response = await profileAPI.updatePhoto(photo);
+  if (response.data.resultCode === 0) {
+    dispatch(setPhotoSucsess(response.data.data.photos));
   }
 };
 

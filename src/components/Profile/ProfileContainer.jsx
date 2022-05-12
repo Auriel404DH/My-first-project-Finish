@@ -2,19 +2,23 @@ import React from 'react';
 import Profile from './Profile';
 // import * as axios from 'axios';
 import { connect } from 'react-redux';
-import { setUserProfile } from './../../redux/pReduser';
 import { useParams } from 'react-router-dom';
-import { getProfileThunkCreator, setStatusThunk, updateStatusThunk } from './../../redux/pReduser';
 import { withAuthRedirect } from '../../hoc/AuthReduser';
 import { compose } from 'redux';
+import {
+  getProfileThunkCreator,
+  setStatusThunk,
+  updateStatusThunk,
+  updateProfilePhoto,
+  setUserProfile,
+} from './../../redux/pReduser';
 
 const withParams = (Component) => {
   return (props) => <Component {...props} params={useParams()} />;
 };
 
 class ProfileContainer extends React.Component {
-  
-  componentDidMount() {
+  refreshProfile() {
     let userId = this.props.params.userId;
     if (!userId) {
       userId = 23173;
@@ -23,9 +27,20 @@ class ProfileContainer extends React.Component {
     this.props.setStatusThunk(userId);
   }
 
+  componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.params.userId !== prevProps.params.userId) {
+      this.refreshProfile();
+    }
+  }
+
   render() {
     return (
       <Profile
+        isOwner={!this.props.params.userId}
         {...this.props}
         status={this.props.status}
         updateStatusThunk={this.props.updateStatusThunk}
@@ -45,6 +60,7 @@ export default compose(
     getProfileThunkCreator,
     setStatusThunk,
     updateStatusThunk,
+    updateProfilePhoto,
   }),
   withAuthRedirect,
   withParams,

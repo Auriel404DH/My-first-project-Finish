@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './users.module.css';
+import UserFoto from './../../assets/BlyaUser.jpg'
 
 let User = ({ u, idUser, followingInProgress, unfollowThunkCreator, followThunkCreator }) => {
   return (
@@ -8,7 +9,7 @@ let User = ({ u, idUser, followingInProgress, unfollowThunkCreator, followThunkC
       <span className={styles.leftPart}>
         <div>
           <NavLink to={'/Profile/' + idUser}>
-            <img src={u.photos.large} alt={'#'} className={styles.usersPhoto} />
+            <img src={u.photos.large || UserFoto} alt={'#'} className={styles.usersPhoto} />
           </NavLink>
         </div>
         <div>

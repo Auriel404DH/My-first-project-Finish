@@ -2,15 +2,29 @@ import React from 'react';
 import classes from './../Profile.module.css';
 import Preload from './../../common/Preloader/preload';
 import ProfileStatus from './pStatus';
+import User from './../../../assets/BlyaUser.jpg';
+import icon from './../../../assets/icon.png';
 
 const Profile = (props) => {
   if (!props.profile) {
     return <Preload />;
   }
+
+  const mainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      let photo = e.target.files[0];
+      props.updateProfilePhoto(photo);
+    }
+  };
+
   return (
     <div className={classes.content__info}>
       <div className={classes.info__photo}>
-        <img src={props.profile.photos.large} alt="#" />
+        <label>
+          <img className={classes.qwe} src={icon} alt="#" />
+          {props.isOwner && <input type={'file'} onChange={mainPhotoSelected} />}
+        </label>
+        <img className={classes.ava} src={props.profile.photos.large || User} alt="#" />
       </div>
       <div className={classes.info__info}>
         <span className={classes.info__title}>

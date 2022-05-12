@@ -31,6 +31,16 @@ export const profileAPI = {
   updateStatus(status) {
     return instanse.put(`profile/status`, { status: status });
   },
+  updatePhoto(photoFile) {
+    const formData = new FormData();
+    formData.append('image', photoFile);
+
+    return instanse.put(`profile/photo`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  },
 };
 export const HeaderAPI = {
   getHeaderRoom() {
