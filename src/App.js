@@ -23,8 +23,19 @@ const DialogContainerLazy = React.lazy(() => import('./components/Dialog/MyDialo
 const UsersContainerLazy = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
+  catchUnhandledErrors = (promiseRejectionEvent) => {
+    setTimeout(() => {
+      alert(promiseRejectionEvent);
+    }, 3000);
+  };
+
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener('unhandledrejection', this.catchUnhandledErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.catchUnhandledErrors);
   }
 
   render() {
@@ -46,6 +57,7 @@ class App extends React.Component {
               <Route path="/news" element={<News />} />
               <Route path="/Music" element={<Music />} />
               <Route path="/Exit" element={<Exit />} />
+              <Route path="/" element={<ProfileContainerLazy />} />
               <Route path="/login" element={<Login />} />
             </Routes>
           </React.Suspense>

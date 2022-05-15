@@ -67,6 +67,7 @@
 //     changeText: 'Write something pls...',
 //   },
 //   SidebarPage: {},
+
 //   dispatch(action) {
 //     if (action.type === 'ADD-POST') {
 //       let newPost = {

@@ -4,6 +4,7 @@ const INITIALIZED_SUCCESS = 'app/INITIALIZED_SUCCESS';
 
 let initialState = {
   initialized: false,
+  globalError: null
 };
 
 const appReduser = (state = initialState, action) => {
