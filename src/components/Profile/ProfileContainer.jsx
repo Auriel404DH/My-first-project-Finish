@@ -11,6 +11,7 @@ import {
   updateStatusThunk,
   updateProfilePhoto,
   setUserProfile,
+  updateDataThunk,
 } from './../../redux/pReduser';
 
 const withParams = (Component) => {
@@ -44,6 +45,7 @@ class ProfileContainer extends React.Component {
         {...this.props}
         status={this.props.status}
         updateStatusThunk={this.props.updateStatusThunk}
+        updateDataThunk={this.props.updateDataThunk}
       />
     );
   }
@@ -61,6 +63,7 @@ export default compose(
     setStatusThunk,
     updateStatusThunk,
     updateProfilePhoto,
+    updateDataThunk,
   }),
   withAuthRedirect,
   withParams,

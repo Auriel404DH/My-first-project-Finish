@@ -1,12 +1,14 @@
-import { HeaderAPI } from '../api/api';
+import { GuardAPI, HeaderAPI } from '../api/api';
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
+const GET_CAPTCHA_URL = 'auth/GET_CAPTCHA_URL';
 
 let initialState = {
   userID: null,
   email: null,
   login: null,
   isAuth: false,
+  captchaURL: null,
 };
 
 const autReduser = (state = initialState, action) => {
@@ -15,6 +17,12 @@ const autReduser = (state = initialState, action) => {
       return {
         ...state,
         ...action.data,
+      };
+    }
+    case GET_CAPTCHA_URL: {
+      return {
+        ...state,
+        captchaURL: action.data,
       };
     }
 
@@ -28,6 +36,8 @@ const setAuthUserData = (userId, email, login, isAuth) => ({
   data: { userId, email, login, isAuth },
 });
 
+const getCaptchaUrl = (url) => ({ type: GET_CAPTCHA_URL, data: { url } });
+
 export const setAuthThunkCreator = () => async (dispatch) => {
   let response = await HeaderAPI.getHeaderRoom();
 
@@ -38,12 +48,15 @@ export const setAuthThunkCreator = () => async (dispatch) => {
 };
 
 export const LoginAuthThunkCreator =
-  (email, password, rememberMe, setStatus) => async (dispatch) => {
-    let response = await HeaderAPI.login(email, password, rememberMe);
+  (email, password, rememberMe, captcha, setStatus) => async (dispatch) => {
+    let response = await HeaderAPI.login(email, password, rememberMe, captcha);
 
     if (response.data.resultCode === 0) {
       dispatch(setAuthThunkCreator());
     } else {
+      if (response.data.resultCode === 10) {
+        dispatch(getCaptchaThunk());
+      }
       setStatus(response.data.messages);
     }
   };
@@ -54,6 +67,12 @@ export const LogoutAuthThunkCreator = () => async (dispatch) => {
   if (response.data.resultCode === 0) {
     dispatch(setAuthUserData(null, null, null, false));
   }
+};
+
+export const getCaptchaThunk = () => async (dispatch) => {
+  let response = await GuardAPI.getCaptcha();
+  const captchaURL = response.data.url;
+  dispatch(getCaptchaUrl(captchaURL));
 };
 
 export default autReduser;

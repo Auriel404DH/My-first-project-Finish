@@ -95,3 +95,94 @@ input[type='file'] {
   outline: 3px solid rgb(182, 182, 227);
   box-shadow: 0px 0px 15px black;
 }
+
+.contact {
+  margin: 0 auto;
+  width: fit-content;
+  padding: 2px;
+  margin-left: 50%;
+}
+
+.editButton {
+  position: absolute;
+  cursor: pointer;
+  background-color: rgb(182, 182, 227);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: black;
+  width: 90px;
+  left: 58%;
+  top: 450px;
+}
+
+.backButton {
+  position: absolute;
+  cursor: pointer;
+  background-color: rgb(182, 182, 227);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: black;
+  width: 90px;
+  left: 53%;
+  top: 450px;
+}
+
+.editButtonStart {
+  position: absolute;
+  cursor: pointer;
+  background-color: rgb(182, 182, 227);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: black;
+  width: 90px;
+  left: 73.5%;
+  top: 450px;
+}
+
+.editButton:hover {
+  background-color: rgb(133, 133, 193);
+  font-weight: 900;
+  box-shadow: 0px 0px 15px rgb(144, 136, 194);
+}
+
+.formName {
+  border-radius: 5px;
+  padding: 4px;
+  margin: 4px;
+  margin-left: 40px;
+  background-color: rgb(208, 208, 231);
+}
+
+.formNameCheck {
+  border-radius: 5px;
+  padding: 4px;
+  padding-right: 2px;
+  margin: 4px;
+  margin-left: 40px;
+  background-color: rgb(208, 208, 231);
+  width: fit-content;
+}
+
+.err {
+  font-weight: 500;
+  box-shadow: 1px 1px 5px black;
+  text-align: center;
+  background-color: rgb(188, 162, 162);
+  color: brown;
+  border-radius: 5px;
+  width: 340px;
+  font-size: 18px;
+  margin-left: 40px;
+}

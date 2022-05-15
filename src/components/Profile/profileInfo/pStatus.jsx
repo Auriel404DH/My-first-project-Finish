@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ProfileStatus = ({ status, updateStatusThunk }) => {
+const ProfileStatus = ({ isOwner, status, updateStatusThunk }) => {
   const [editMode, setEditMode] = useState(false);
   const [editStatus, setEditStatus] = useState(status);
 
@@ -9,7 +9,9 @@ const ProfileStatus = ({ status, updateStatusThunk }) => {
   }, [status]);
 
   const activateEditMode = () => {
-    setEditMode(true);
+    if (isOwner) {
+      setEditMode(true);
+    }
   };
 
   const deactivateEditMode = () => {

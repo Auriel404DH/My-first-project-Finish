@@ -2,7 +2,9 @@ import * as Yup from 'yup';
 
 export const loginFormSchema = Yup.object().shape({
   email: Yup.string().email('Write true email, pls').required('Email is required ^^'),
-  password: Yup.string().min(8, 'Must be longer than 8 characters').required('What you can do without password? (-:'),
+  password: Yup.string()
+    .min(8, 'Must be longer than 8 characters')
+    .required('What you can do without password? (-:'),
 });
 
 export const dialogFormSchema = Yup.object({
@@ -11,6 +13,12 @@ export const dialogFormSchema = Yup.object({
 
 export const profilePostFormSchema = Yup.object({
   post: Yup.string().max(300, 'Умей структурировать свои мысли :-)'),
+});
+
+export const dateSchema = Yup.object({
+  fullName: Yup.string().max(40, 'Странный ты'),
+  lookingForAJobDescription: Yup.string().min(5, 'Хвастайся смелее_)').required(),
+  aboutMe: Yup.string().min(5, 'Думаю, ты можешь сказать больше :-)'),
 });
 
 // validate={(values) => {

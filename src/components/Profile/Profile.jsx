@@ -3,7 +3,14 @@ import ProfileInfo from './profileInfo/profileInfo';
 import Logo from './Logo/logo';
 import MyPostContainer from './News/windowNew/MyPostContainer';
 
-const Profile = ({ isOwner, profile, status, updateStatusThunk, updateProfilePhoto }) => {
+const Profile = ({
+  isOwner,
+  profile,
+  status,
+  updateStatusThunk,
+  updateProfilePhoto,
+  updateDataThunk,
+}) => {
   return (
     <div>
       <Logo />
@@ -11,6 +18,7 @@ const Profile = ({ isOwner, profile, status, updateStatusThunk, updateProfilePho
         isOwner={isOwner}
         profile={profile}
         status={status}
+        updateDataThunk={updateDataThunk}
         updateProfilePhoto={updateProfilePhoto}
         updateStatusThunk={updateStatusThunk}
       />

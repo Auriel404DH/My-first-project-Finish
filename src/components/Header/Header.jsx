@@ -8,11 +8,9 @@ const Header = ({ isAuth, login, LogoutAuthThunkCreator }) => {
     <div className={classes.header}>
       <img src="https://rakit.ru/wp-content/uploads/2016/02/Pepsi-logo.png" alt="#" />
       <div>
-        {isAuth ? (
-          <div className={classes.header__news}>
-            А знали ли вы, что вы на самом деле пидор ебаный...
-          </div>
-        ) : null}
+        <div className={classes.header__news}>
+          А знали ли вы, что вы на самом деле пидор ебаный...
+        </div>
       </div>
       <div className={classes.login_block}>
         {isAuth ? (

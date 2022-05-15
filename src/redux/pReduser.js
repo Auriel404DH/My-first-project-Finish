@@ -4,6 +4,7 @@ let SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
 let ADD_POST = 'profile/ADD-POST';
 let SET_STATUS = 'profile/SET_STATUS';
 let SET_PHOTO = 'profile/SET_PHOTO';
+let PROFILE_DATA = 'profile/PROFILE_DATA';
 
 let initialState = {
   profileData: [
@@ -48,6 +49,28 @@ const profileReduser = (state = initialState, action) => {
         profile: { ...state.profile, photos: action.photos },
       };
     }
+    case PROFILE_DATA: {
+      action = action.data;
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          date: action.date,
+          aboutMe: action.aboutMe,
+          contacts: {
+            ...state.profile.contacts,
+            facebook: action.facebook,
+            github: action.github,
+            instagram: action.instagram,
+            mainLink: action.mainLink,
+            twitter: action.twitter,
+            vk: action.vk,
+            website: action.website,
+            youtube: action.youtube,
+          },
+        },
+      };
+    }
     default:
       return state;
   }
@@ -57,6 +80,7 @@ export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const addPost = (userText) => ({ type: ADD_POST, userText });
 const setStatus = (status) => ({ type: SET_STATUS, status });
 const setPhotoSucsess = (photos) => ({ type: SET_PHOTO, photos });
+// const updateData = (data) => ({ type: PROFILE_DATA, data });
 
 export const getProfileThunkCreator = (userId) => async (dispatch) => {
   let response = await profileAPI.getProfile(userId);
@@ -79,6 +103,15 @@ export const updateProfilePhoto = (photo) => async (dispatch) => {
   let response = await profileAPI.updatePhoto(photo);
   if (response.data.resultCode === 0) {
     dispatch(setPhotoSucsess(response.data.data.photos));
+  }
+};
+
+export const updateDataThunk = (data) => async (dispatch, getState) => {
+  const userID = getState().auth.userId;
+  let response = await profileAPI.updateData(data);
+  if (response.data.resultCode === 0) {
+    // dispatch(updateData(data));
+    dispatch(getProfileThunkCreator(userID));
   }
 };
 

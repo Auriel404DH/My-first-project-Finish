@@ -41,17 +41,25 @@ export const profileAPI = {
       },
     });
   },
+  updateData(data) {
+    return instanse.put(`profile`, data);
+  },
 };
 export const HeaderAPI = {
   getHeaderRoom() {
     return instanse.get(`auth/me`);
   },
-  login(email, password, rememberMe = false) {
-    return instanse.post(`auth/login`, { email, password, rememberMe });
+  login(email, password, rememberMe = false, captcha = null) {
+    return instanse.post(`auth/login`, { email, password, rememberMe, captcha });
   },
   logout() {
     return instanse.delete(`auth/login`);
   },
 };
 
+export const GuardAPI = {
+  getCaptcha() {
+    return instanse.get(`security/get-captcha-url`);
+  },
+};
 export const dialogAPI = {};

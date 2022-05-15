@@ -6,13 +6,19 @@ import { connect } from 'react-redux';
 import { LoginAuthThunkCreator } from '../../redux/autReduser';
 import { Navigate } from 'react-router-dom';
 
-const LoginContainer = ({ isAuth, LoginAuthThunkCreator }) => {
+const LoginContainer = ({ isAuth, LoginAuthThunkCreator, captchaURL }) => {
   if (isAuth) {
     return <Navigate to={'/Profile'} />;
   }
 
   const onsubmit = (values, { setSubmitting, setStatus }) => {
-    LoginAuthThunkCreator(values.email, values.password, values.rememberMe, setStatus);
+    LoginAuthThunkCreator(
+      values.email,
+      values.password,
+      values.rememberMe,
+      values.captcha,
+      setStatus,
+    );
     setSubmitting(false);
   };
 
@@ -43,6 +49,9 @@ const LoginContainer = ({ isAuth, LoginAuthThunkCreator }) => {
               <Field type={'checkbox'} name={'rememberMe'} />
               <label htmlFor={'rememberMe'}> remember me </label>
             </div>
+            {captchaURL && <img src={captchaURL} alt={'#'} />}
+            {captchaURL && <Field type={'captcha'} name={'captcha'} />}
+            <ErrorMessage name="captcha" className={classes.errorE} component="div" />
             <div className={classes.erroror}>{status}</div>
             <button type={'submit'} className={classes.sub}>
               Go
@@ -55,6 +64,7 @@ const LoginContainer = ({ isAuth, LoginAuthThunkCreator }) => {
 };
 
 const mapStateToProps = (state) => ({
+  captchaURL: state.auth.captchaURL,
   isAuth: state.auth.isAuth,
 });
 
