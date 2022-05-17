@@ -36,12 +36,6 @@ const usersReduser = (state = initialState, action) => {
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userID, 'id', { friend: false }),
-        //  state.users.map((u) => {
-        //   if (u.id === action.userID) {
-        //     return { ...u, friend: false };
-        //   }
-        //   return u;
-        // }),
       };
     }
     case SET_CURRENT_PAGE: {
