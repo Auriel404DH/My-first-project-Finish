@@ -14,6 +14,10 @@ const Header = () => {
     };
   });
 
+  const logoutClick = () => {
+    dispatch(LogoutAuthThunkCreator());
+  };
+
   return (
     <div className={classes.header}>
       <img src="https://rakit.ru/wp-content/uploads/2016/02/Pepsi-logo.png" alt="#" />
@@ -24,7 +28,7 @@ const Header = () => {
         {isAuth ? (
           <div>
             <span>{login} </span>
-            <button className={classes.logout} onClick={dispatch(LogoutAuthThunkCreator)}>
+            <button className={classes.logout} onClick={logoutClick}>
               Log out
             </button>
           </div>
