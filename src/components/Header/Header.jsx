@@ -1,22 +1,30 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { LogoutAuthThunkCreator } from '../../redux/autReduser';
 import classes from './Header.module.css';
-// import { Navigate } from 'react-router-dom';
 
-const Header = ({ isAuth, login, LogoutAuthThunkCreator }) => {
+const Header = () => {
+  const dispatch = useDispatch();
+
+  const { isAuth, login } = useSelector(({ auth }) => {
+    return {
+      isAuth: auth.isAuth,
+      login: auth.login,
+    };
+  });
+
   return (
     <div className={classes.header}>
       <img src="https://rakit.ru/wp-content/uploads/2016/02/Pepsi-logo.png" alt="#" />
       <div>
-        <div className={classes.header__news}>
-          А знали ли вы, что вы на самом деле пидор ебаный...
-        </div>
+        <div className={classes.header__news}>А знали ли вы, что на самом деле...</div>
       </div>
       <div className={classes.login_block}>
         {isAuth ? (
           <div>
             <span>{login} </span>
-            <button className={classes.logout} onClick={LogoutAuthThunkCreator}>
+            <button className={classes.logout} onClick={dispatch(LogoutAuthThunkCreator)}>
               Log out
             </button>
           </div>

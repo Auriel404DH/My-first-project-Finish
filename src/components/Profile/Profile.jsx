@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileInfo from './profileInfo/profileInfo';
 import Logo from './Logo/logo';
-import MyPostContainer from './News/windowNew/MyPostContainer';
+import MyPost from './News/MyPost';
 
 const Profile = ({
   isOwner,
@@ -22,7 +22,7 @@ const Profile = ({
         updateProfilePhoto={updateProfilePhoto}
         updateStatusThunk={updateStatusThunk}
       />
-      <MyPostContainer />
+      <MyPost />
     </div>
   );
 };

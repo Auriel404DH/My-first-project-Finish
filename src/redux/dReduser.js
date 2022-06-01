@@ -100,10 +100,5 @@ export const AddMessageThunkCreator = (userText) => {
     dispatch(changeMessage(''))
   }
 }
-// export const changeMessageThunkCreator = (userText) => {
-//   return (dispatch) => {
-//     dispatch(changeMessage(userText))
-//   }
-// }
 
 export default messageReduser;

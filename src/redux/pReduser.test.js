@@ -6,7 +6,7 @@ let initialState = {
     { id: 2, message: 'Hello, my name is Adam' },
     { id: 3, message: 'I like cakes' },
     { id: 4, message: 'I want to tell you about Gagarin' },
-    { id: 5, message: 'I fuck GUAP' },
+    { id: 5, message: 'I love GUAP' },
   ],
 };
 

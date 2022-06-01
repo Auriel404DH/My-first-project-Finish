@@ -1,46 +1,41 @@
 import React from 'react';
-// import { Navigate } from 'react-router-dom';
-import './Dialog.module.css';
 import classes from './Dialog.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import MessageMY from './Send/Message';
-// import { Form, Field, useFormik } from 'formik';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { dialogFormSchema } from '../FormValidation/LoginFormSchema';
+import { useDispatch, useSelector } from 'react-redux';
+import { AddMessageThunkCreator } from '../../redux/dReduser';
+import { withAuthRedirect } from '../../hoc/AuthReduser';
 
-const Dialog = (props) => {
-  let dialogElements = props.diafirst.map((dialog) => (
+const Dialog = () => {
+  const dispatch = useDispatch();
+
+  const { diafirst, mesfirst, MessList } = useSelector(({ DialogPage }) => {
+    return {
+      diafirst: DialogPage.dialogData,
+      mesfirst: DialogPage.messagesData,
+      textAreaValue: DialogPage.MessagesText,
+      MessList: DialogPage.myMessagesData,
+    };
+  });
+
+  let dialogElements = diafirst.map((dialog) => (
     <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} src={dialog.src} />
   ));
 
-  let messagesElements = props.mesfirst.map((element) => (
+  let messagesElements = mesfirst.map((element) => (
     <Message text={element.message} id={element.id} key={element.id} src={element.src} />
   ));
 
-  let NewMessList = props.MessList.map((element) => {
+  let NewMessList = MessList.map((element) => {
     return <MessageMY key={element.id} id={element.id} message={element.message} />;
   });
 
   let addMessage = (text) => {
-    props.AddMessageThunkCreator(text);
+    dispatch(AddMessageThunkCreator(text));
   };
-
-  // const formiks = useFormik({
-  //   initialValues: { message: '' },
-  //   onSubmit: (values) => {
-  //     addMessage(values.message);
-  //   },
-  //   validationSchema: dialogFormSchema,
-  //   // validate: (values) => {
-  //   //   const errors = {};
-  //   //   if (values.message.length > 300) {
-  //   //     errors.message = "Wo, you're so cool, but put a 'send' button please";
-  //   //     butON=true
-  //   //   }
-  //   //   return errors;
-  //   // },
-  // });
 
   return (
     <div className={classes.dialogs}>
@@ -75,4 +70,4 @@ const Dialog = (props) => {
   );
 };
 
-export default Dialog;
+export default withAuthRedirect(Dialog);

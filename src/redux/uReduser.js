@@ -24,12 +24,6 @@ const usersReduser = (state = initialState, action) => {
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userID, 'id', { friend: true }),
-        // state.users.map((u) => {
-        //   if (u.id === action.userID) {
-        //     return { ...u, friend: true };
-        //   }
-        //   return u;
-        // }),
       };
     }
     case UNFOLLOW: {

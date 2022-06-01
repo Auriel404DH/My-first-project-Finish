@@ -1,17 +1,24 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import React from 'react';
-import classes from './../MyNew.module.css';
-import New from './../New/New';
-import { profilePostFormSchema } from '../../../FormValidation/LoginFormSchema';
+import classes from './MyNew.module.css';
+import New from './New';
+import { profilePostFormSchema } from '../../FormValidation/LoginFormSchema';
+import { addPost } from '../../../redux/pReduser';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Window = (props) => {
-  // let newPostElement = React.createRef();
+const Window = () => {
+  const dispatch = useDispatch();
 
-  let postsElements = props.profileData.map((p) => <New message={p.message} key={p.id} />);
+  const { profileData } = useSelector((ProfilePage) => {
+    return {
+      profileData: ProfilePage.profileData,
+    };
+  });
 
-  let addPost = (text) => {
-    props.addPost(text);
-    // props.changeText('');
+  let postsElements = profileData.map((p) => <New message={p.message} key={p.id} />);
+
+  let addPostF = (text) => {
+    dispatch(addPost(text));
   };
 
   return (
@@ -20,7 +27,7 @@ const Window = (props) => {
       <Formik
         initialValues={{ post: '' }}
         onSubmit={(values) => {
-          addPost(values.post);
+          addPostF(values.post);
         }}
         validationSchema={profilePostFormSchema}
       >

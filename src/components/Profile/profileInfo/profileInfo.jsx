@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import classes from './../Profile.module.css';
 import Preload from './../../common/Preloader/preload';
-import ProfileStatus from './pStatus';
-import User from './../../../assets/BlyaUser.jpg';
+import ProfileStatus from './EditProfile/pStatus';
+import User from './../../../assets/Userw.jpg';
 import icon from './../../../assets/icon.png';
-import MyInformEdit from './profileDataForm';
+import MyInformEdit from './EditProfile/MyInformEdit';
+import MyInformSet from './EditProfile/MyInformSet';
 
 const Profile = (props) => {
   let [editMode, setEditMode] = useState(false);
@@ -13,57 +14,19 @@ const Profile = (props) => {
     return <Preload />;
   }
 
-  // const Contact = ({ contactTitle, value }) => {
-
-  //   return (
-  //     <div className={classes.contact}>
-  //       <b>{contactTitle}</b> : {value}
-  //     </div>
-  //   );
-  // };
-
-  const MyInform = ({ profile, isOwner, toEditMode }) => {
-    return (
-      <div>
-        {isOwner && (
-          <div>
-            <button className={classes.editButtonStart} onClick={toEditMode}>Edit ^^</button>
-          </div>
-        )}
-        <ul className={classes.info__list}>
-          <li>
-            <span>Birthday: </span> {profile.date}
-          </li>
-          {profile.lookingForAJob && (
-            <li>
-              <span>My professional skills: </span>
-              {profile.lookingForAJobDescription}
-            </li>
-          )}
-          <li>
-            <span>Безработный? - </span> {profile.lookingForAJob ? 'true' : 'false'}
-          </li>
-          <li>
-            <span>About Me:</span> {profile.aboutMe}
-          </li>
-          <li>
-            <div>
-              <b>Contacts: </b>
-              {/* {Object.keys(profile.contacts).map((key) => {
-                return <Contact key={key} contactTitle={key} value={profile.contacts[key]} />;
-              })}{' '} */}
-            </div>
-          </li>
-        </ul>
-      </div>
-    );
-  };
-
   const mainPhotoSelected = (e) => {
     if (e.target.files.length) {
       let photo = e.target.files[0];
       props.updateProfilePhoto(photo);
     }
+  };
+
+  const friendYes = () => {
+    setEditMode(true);
+  };
+
+  const friendNo = () => {
+    setEditMode(false);
   };
 
   return (
@@ -89,20 +52,12 @@ const Profile = (props) => {
         </span>
         {editMode ? (
           <MyInformEdit
-            toEditMode={() => {
-              setEditMode(false);
-            }}
+            toEditMode={friendNo}
             updateDataThunk={props.updateDataThunk}
             profile={props.profile}
           />
         ) : (
-          <MyInform
-            toEditMode={() => {
-              setEditMode(true);
-            }}
-            profile={props.profile}
-            isOwner={props.isOwner}
-          />
+          <MyInformSet toEditMode={friendYes} profile={props.profile} isOwner={props.isOwner} />
         )}
       </div>
     </div>

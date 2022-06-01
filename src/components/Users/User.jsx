@@ -1,9 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './users.module.css';
-import UserFoto from './../../assets/BlyaUser.jpg'
+import UserFoto from './../../assets/Userw.jpg';
+import { useDispatch } from 'react-redux';
+import { unfollowThunkCreator, followThunkCreator } from '../../redux/uReduser';
 
-let User = ({ u, idUser, followingInProgress, unfollowThunkCreator, followThunkCreator }) => {
+let User = ({ u, idUser, followingInProgress }) => {
+  const dispatch = useDispatch();
+
+  const unfollow = () => {
+    dispatch(unfollowThunkCreator(idUser));
+  };
+
+  const follow = () => {
+    dispatch(followThunkCreator(idUser));
+  };
+
   return (
     <div key={idUser} className={styles.AllList}>
       <span className={styles.leftPart}>
@@ -17,19 +29,15 @@ let User = ({ u, idUser, followingInProgress, unfollowThunkCreator, followThunkC
             <button
               disabled={followingInProgress.some((id) => id === idUser)}
               className={styles.button}
-              onClick={() => {
-                unfollowThunkCreator(idUser);
-              }}
+              onClick={unfollow}
             >
-              Забыть
+              Удалить
             </button>
           ) : (
             <button
               className={styles.button}
               disabled={followingInProgress.some((id) => id === idUser)}
-              onClick={() => {
-                followThunkCreator(idUser);
-              }}
+              onClick={follow}
             >
               Дружить
             </button>

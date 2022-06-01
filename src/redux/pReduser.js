@@ -12,7 +12,7 @@ let initialState = {
     { id: 2, message: 'Hello, my name is Adam' },
     { id: 3, message: 'I like cakes' },
     { id: 4, message: 'I want to tell you about Gagarin' },
-    { id: 5, message: 'I fuck GUAP' },
+    { id: 5, message: 'I love GUAP' },
   ],
   profile: null,
   status: '',
@@ -57,17 +57,6 @@ const profileReduser = (state = initialState, action) => {
           ...state.profile,
           date: action.date,
           aboutMe: action.aboutMe,
-          contacts: {
-            ...state.profile.contacts,
-            facebook: action.facebook,
-            github: action.github,
-            instagram: action.instagram,
-            mainLink: action.mainLink,
-            twitter: action.twitter,
-            vk: action.vk,
-            website: action.website,
-            youtube: action.youtube,
-          },
         },
       };
     }
@@ -76,11 +65,11 @@ const profileReduser = (state = initialState, action) => {
   }
 };
 
-export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-export const addPost = (userText) => ({ type: ADD_POST, userText });
 const setStatus = (status) => ({ type: SET_STATUS, status });
 const setPhotoSucsess = (photos) => ({ type: SET_PHOTO, photos });
-// const updateData = (data) => ({ type: PROFILE_DATA, data });
+
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const addPost = (userText) => ({ type: ADD_POST, userText });
 
 export const getProfileThunkCreator = (userId) => async (dispatch) => {
   let response = await profileAPI.getProfile(userId);
@@ -114,7 +103,6 @@ export const updateDataThunk = (data) => async (dispatch, getState) => {
   const userID = getState().auth.userId;
   let response = await profileAPI.updateData(data);
   if (response.data.resultCode === 0) {
-    // dispatch(updateData(data));
     dispatch(getProfileThunkCreator(userID));
   }
 };

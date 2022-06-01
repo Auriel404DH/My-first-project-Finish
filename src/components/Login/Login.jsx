@@ -2,22 +2,33 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginFormSchema } from '../FormValidation/LoginFormSchema';
 import classes from './Login.module.css';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { LoginAuthThunkCreator } from '../../redux/autReduser';
 import { Navigate } from 'react-router-dom';
 
-const LoginContainer = ({ isAuth, LoginAuthThunkCreator, captchaURL }) => {
+const LoginContainer = () => {
+  const dispatch = useDispatch();
+
+  const { isAuth, captchaURL } = useSelector(({ auth }) => {
+    return {
+      isAuth: auth.isAuth,
+      captchaURL: auth.captchaURL,
+    };
+  });
+
   if (isAuth) {
     return <Navigate to={'/Profile'} />;
   }
 
   const onsubmit = (values, { setSubmitting, setStatus }) => {
-    LoginAuthThunkCreator(
-      values.email,
-      values.password,
-      values.rememberMe,
-      values.captcha,
-      setStatus,
+    dispatch(
+      LoginAuthThunkCreator(
+        values.email,
+        values.password,
+        values.rememberMe,
+        values.captcha,
+        setStatus,
+      ),
     );
     setSubmitting(false);
   };
@@ -63,9 +74,4 @@ const LoginContainer = ({ isAuth, LoginAuthThunkCreator, captchaURL }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  captchaURL: state.auth.captchaURL,
-  isAuth: state.auth.isAuth,
-});
-
-export default connect(mapStateToProps, { LoginAuthThunkCreator })(LoginContainer);
+export default LoginContainer;

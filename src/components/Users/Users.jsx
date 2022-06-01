@@ -3,23 +3,16 @@ import Paginator from '../common/paginator/Paginator';
 import User from './User';
 import styles from './users.module.css';
 
-let Users = (props) => {
-  
+let Users = ({ onPageChanged, totalItemsCount, pageSize, users, followingInProgress }) => {
   return (
     <div className={styles.all}>
       <Paginator
-        onPageChanged={props.onPageChanged}
-        totalItemsCount={props.totalItemsCount}
-        pageSize={props.pageSize}
+        onPageChanged={onPageChanged}
+        totalItemsCount={totalItemsCount}
+        pageSize={pageSize}
       />
-      {props.users.map((u) => (
-        <User
-          u={u}
-          idUser={u.id}
-          followingInProgress={props.followingInProgress}
-          unfollowThunkCreator={props.unfollowThunkCreator}
-          followThunkCreator={props.followThunkCreator}
-        />
+      {users.map((u) => (
+        <User u={u} idUser={u.id} followingInProgress={followingInProgress} />
       ))}
     </div>
   );
