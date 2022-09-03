@@ -22,7 +22,7 @@ const Header = () => {
     <div className={classes.header}>
       <img src="https://rakit.ru/wp-content/uploads/2016/02/Pepsi-logo.png" alt="#" />
       <div>
-        <div className={classes.header__news}>А знали ли вы, что на самом деле...</div>
+        <div className={classes.header__news}>React + Redux = ...</div>
       </div>
       <div className={classes.login_block}>
         {isAuth ? (

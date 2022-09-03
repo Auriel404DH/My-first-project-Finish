@@ -1,8 +1,8 @@
 .Login {
-  padding-right: 220px;
-  padding-bottom: 15px;
-  margin: 20px auto;
-  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
+  padding-left: 30%;
   font-size: 26px;
 }
 
@@ -12,10 +12,12 @@
 }
 
 .sub {
-  border-radius: 10px;
+  border-radius: 4px;
+  border: none;
   font-weight: 500;
   padding: 0.5rem 3rem;
   background-color: rgb(182, 182, 227);
+  box-shadow: 1px 1px 2px black;
   cursor: pointer;
 }
 
@@ -39,8 +41,9 @@
 
 .errorE {
   font-size: 18px;
-  box-shadow: 1px 1px 5px black;
+  box-shadow: 1px 1px 2px black;
   margin: 0.5rem;
+  margin-left: 2px;
   text-align: center;
   background-color: rgb(188, 162, 162);
   color: brown;

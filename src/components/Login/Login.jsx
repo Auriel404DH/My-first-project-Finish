@@ -39,7 +39,7 @@ const LoginContainer = () => {
     <div className={classes.Login}>
       <h1>Login</h1>
       <Formik initialValues={initval} onSubmit={onsubmit} validationSchema={loginFormSchema}>
-        {({ errors, touched, status }) => (
+        {({ status }) => (
           <Form>
             <div>
               <Field name="email" placeholder={'e-mail'} className={classes.form} />

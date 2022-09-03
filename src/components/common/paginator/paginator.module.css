@@ -2,18 +2,19 @@
   font-weight: 700;
   padding: 5px 9px;
   background-color: rgb(90, 182, 239);
-  border-radius: 20px 10px;
-  box-shadow: 0 0 3px black;
+  border-radius: 3px 3px;
+  box-shadow: 0.6px 0.6px 1.1px black;
   margin: 3px;
   cursor: pointer;
 }
 
 .selectedPageLR {
+  border: none;
   font-weight: 700;
   padding: 5px 9px;
   background-color: rgb(89, 233, 218);
-  border-radius: 20px 10px;
-  box-shadow: 0 0 2px black;
+  border-radius: 3px 3px;
+  box-shadow: 0.6px 0.6px 2px black;
   margin: 3px;
   font-size: 16px;
   cursor: pointer;
@@ -21,7 +22,7 @@
 
 .ListUP {
   background-color: rgb(182, 182, 227);
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 1rem;
   margin-left: 10px;
   font-size: 18px;
@@ -29,7 +30,8 @@
 }
 
 .all {
-  margin: 30px;
+  margin: 10px;
+  margin-left: 0;
 }
 
 .selectedPageTitle {

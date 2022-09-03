@@ -10,12 +10,16 @@ const Window = () => {
   const dispatch = useDispatch();
 
   const { profileData } = useSelector((ProfilePage) => {
+    console.log(ProfilePage);
     return {
-      profileData: ProfilePage.profileData,
+      profileData: ProfilePage.ProfilePage.profileData,
     };
   });
 
-  let postsElements = profileData.map((p) => <New message={p.message} key={p.id} />);
+
+  let postsElements = profileData.map((p) => {
+    return <New message={p.message} key={p.id} />;
+  });
 
   let addPostF = (text) => {
     dispatch(addPost(text));
@@ -37,7 +41,7 @@ const Window = () => {
               type={'text'}
               name={'post'}
               className={classes.news__body}
-              placeholder={'Your post'}
+              placeholder={'Your post...'}
             />
           </div>
           <ErrorMessage name="post" />

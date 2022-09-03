@@ -1,11 +1,10 @@
 body {
   background-image: url('https://million-wallpapers.ru/wallpapers/3/32/488154171441068/oboi-v-detskuyu-komnatu.jpg');
-
 }
 
 .wrapper {
   background-color: rgb(145, 145, 145);
-  box-shadow: inset 0px 0px 15px black;
+  box-shadow: inset 0px 0px 4px black;
   width: 1300px;
   margin: auto;
   border-radius: 5px;
@@ -16,9 +15,9 @@ body {
   grid-template-areas:
     'h h'
     's c';
-    opacity: 0.95;
+  opacity: 0.95;
 }
 
 .app-wrapper-content {
-    grid-area: c;
+  grid-area: c;
 }

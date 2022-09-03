@@ -4,7 +4,7 @@
   border-radius: 5px;
   max-width: 1200px;
   margin-top: 20px;
-  box-shadow: 1px 2px 5px black;
+  box-shadow: 0.4px 0.7px 2px black;
   display: inline-flex;
   margin-left: auto;
   margin-right: auto;
@@ -21,7 +21,7 @@
   font-size: 18px;
   margin: 2px;
   margin-left: 60px;
-  box-shadow: inset 3px 1px 5px black;
+  box-shadow: inset 0.2px 0.6px 3px black;
 }
 
 .header img {
@@ -30,7 +30,7 @@
   margin: 10px;
   background-color: aliceblue;
   border-radius: 20%;
-  box-shadow: inset 3px 1px 5px black;
+  box-shadow: inset 0.3px 0.6px 3px black;
 }
 
 .login_block {
@@ -38,8 +38,8 @@
   margin-right: 0.7rem;
   margin-left: 5px;
   padding: 0.3rem;
-  border-radius: 4px;
-  box-shadow: 3px 1px 5px black;
+  border-radius: 3px;
+  box-shadow: inset 0.3px 0.6px 3px black;
   background-color: aliceblue;
   text-decoration: none;
   font-size: 16px;
@@ -47,10 +47,12 @@
 }
 
 .logout {
-  border-radius: 4px;
+  border-radius: 3px;
   font-weight: 500;
-  padding: 0.2rem;
+  padding: 0.35rem;
+  margin-left: 3px;
   background-color: rgb(182, 182, 227);
-  box-shadow: inset 0px 0px 1px black;
+  box-shadow: inset 0px 0px 2px black;
+  border: none;
   cursor: pointer;
 }
